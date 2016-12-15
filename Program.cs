@@ -26,10 +26,8 @@ namespace ConsoleApplication
 
             int[,] arr2d = { { 1, 2, 3 }, { 4, 5, 6 } };
 
-            var result = addNumsFromFile("numbers.txt");
-
-            Console.WriteLine(result);
-
+            Console.WriteLine(addEvenLINQ(Enumerable.Range(1, 100).ToArray()));
+            Console.WriteLine(addEven(Enumerable.Range(1, 100).ToArray()));
         }
 
         public static int addEven(int[] arr)
@@ -46,6 +44,13 @@ namespace ConsoleApplication
                 }
             }
             return result;
+        }
+
+        public static int addEvenLINQ(int[] arr)
+        {
+            return arr
+            .Where(x => x % 2 == 0)
+            .Sum();
         }
 
         public static string reverse(string str)
@@ -150,16 +155,48 @@ namespace ConsoleApplication
 
             using (StreamReader sr = File.OpenText(file))
             {
-
                 String line;
 
                 while ((line = sr.ReadLine()) != null)
                 {
+
                     result += Convert.ToInt32(line);
                 }
-
             }
             return result;
+        }
+
+        public static int fibInterative(int num)
+        {
+
+            int a = 0;
+            int b = 1;
+
+            for (int i = 1; i < num; i++)
+            {
+                var temp = a;
+                a = b;
+                b = b + temp;
+            }
+
+            return b;
+        }
+
+        public static int countCharsInString(string str, char letter)
+        {
+
+            int count = 0;
+            char[] arr = str.ToCharArray();
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (arr[i] == letter)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }
