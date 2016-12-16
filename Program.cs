@@ -18,10 +18,10 @@ namespace ConsoleApplication
 
             Func<int, string> hello = (x) => "hello";
 
-            var arr2 = Enumerable.Range(1, 100).Where(even).ToList();
+            var arr2 = Enumerable.Range(1, 100).Where(even).Select(i => i + 100).ToList();
             var arr3 = Enumerable.Range(1, 100).Where(odd).ToList();
 
-            //arr2.ForEach(Console.WriteLine);
+            arr2.ForEach(Console.WriteLine);
             //arr3.ForEach(Console.WriteLine);
 
             int[,] arr2d = { { 1, 2, 3 }, { 4, 5, 6 } };
@@ -197,6 +197,6 @@ namespace ConsoleApplication
             }
 
             return count;
-        }
+        }   
     }
 }
